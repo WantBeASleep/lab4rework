@@ -13,19 +13,11 @@ OBJINPUT = $(patsubst $(PREF_INPUT)%.c, %.o, $(SRCINPUT))
 OBJOUTPUT = $(patsubst $(PREF_OUTPUT)%.c, %.o, $(SRCOUTPUT))
 OBJLIB = $(patsubst $(PREF_LIB)%.c, %.o, $(SRCLIB))
 
-
-
-${OBJMENU} :
-	cd $(PREF_MENU) && $(MAKE)
-
-${OBJINPUT} :
-	cd $(PREF_INPUT) && $(MAKE)
-
-${OBJOUTPUT} :
-	cd $(PREF_OUTPUT) && $(MAKE)
-
-${OBJLIB} :
-	cd $(PREF_LIB) && $(MAKE)
-	
 all :
-	gcc -o lab4 ${OBJMENU} ${OBJINPUT} ${OBJOUTPUT} ${OBJLIB} -lreadline
+	cd $(PREF_MENU) && $(MAKE)
+	cd $(PREF_INPUT) && $(MAKE)
+	cd $(PREF_OUTPUT) && $(MAKE)
+	cd $(PREF_LIB) && $(MAKE)
+	gcc -c main.c
+	gcc -o lab4 main.o $(OBJMENU) $(OBJINPUT) $(OBJOUTPUT) $(OBJLIB) -lreadline
+	rm *.o
