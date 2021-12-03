@@ -1,0 +1,51 @@
+lab4.o : main.o inputMenu.o mainMenu.o outputMenu.o inputDataConsole.o outputDataConsole.o addTechPrefix.o cpyElemStruct.o freeNamesFields.o includeElemByIndex.o newElement.o structNewMem.o
+	gcc -o lab4 main.o inputMenu.o mainMenu.o outputMenu.o inputDataConsole.o outputDataConsole.o addTechPrefix.o cpyElemStruct.o freeNamesFields.o includeElemByIndex.o newElement.o structNewMem.o -lreadline
+	rm *.o
+
+main.o : main.c
+	gcc -c main.c
+
+inputMenu.o : menuPrintScanf/inputMenu.c
+	gcc -c menuPrintScanf/inputMenu.c
+
+mainMenu.o : menuPrintScanf/mainMenu.c
+	gcc -c menuPrintScanf/mainMenu.c
+
+outputMenu.o : menuPrintScanf/outputMenu.c
+	gcc -c menuPrintScanf/outputMenu.c
+
+inputDataConsole.o : inputData/inputDataConsole.c
+	gcc -c inputData/inputDataConsole.c
+
+outputDataConsole.o : outputData/outputDataConsole.c
+	gcc -c outputData/outputDataConsole.c
+
+addTechPrefix.o : my_lib/addTechPrefix.c
+	gcc -c my_lib/addTechPrefix.c
+
+cpyElemStruct.o : my_lib/cpyElemStruct.c
+	gcc -c my_lib/cpyElemStruct.c
+
+freeNamesFields.o : my_lib/freeNamesFields.c
+	gcc -c my_lib/freeNamesFields.c
+
+includeElemByIndex.o : my_lib/includeElemByIndex.c
+	gcc -c my_lib/includeElemByIndex.c
+
+newElement.o : my_lib/newElement.c
+	gcc -c my_lib/newElement.c
+
+structNewMem.o: my_lib/structNewMem.c
+	gcc -c my_lib/structNewMem.c
+
+$(PREF_MENU)%.o : $(PREF_MENU)%.c
+	gcc -c $<
+
+$(PREF_INPUT)%.o : $(PREF_INPUT)%.c
+	gcc -c $<
+
+$(PREF_OUTPUT)%.o : $(PREF_OUTPUT)%.c
+	gcc -c $<
+
+$(PREF_LIB)%.o : $(PREF_LIB)%.c
+	gcc -c $<
