@@ -4,5 +4,6 @@
 #include "struct.h"
 
 detail* inputDataConsole(int *DataSize);
+detail* inputDataFile(int *DataSize);
 
 #endif

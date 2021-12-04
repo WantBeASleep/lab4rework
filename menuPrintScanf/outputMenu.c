@@ -19,6 +19,10 @@ void outputMenu(detail *Data, int DataSize){
             outputDataConsole(Data, DataSize);
             return;
         }
+        case 2:{
+            outputDataFile(Data, DataSize);
+            return;
+        }
     }
 
 }

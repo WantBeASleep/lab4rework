@@ -4,5 +4,6 @@
 #include "struct.h"
 
 void outputDataConsole(detail *Data, int DataSize);
+void outputDataFile(detail *Data, int DataSize);
 
 #endif
