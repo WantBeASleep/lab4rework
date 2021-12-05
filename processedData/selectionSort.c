@@ -10,24 +10,44 @@ sortType
 
 #include "../h_files/struct.h"
 #include "../h_files/my_lib.h"
+#include "../h_files/output_funcs.h"
 
 detail* selectionSort(detail *Data, int DataSize, int sortType){
     for (int i=1; i<DataSize - 1; i++){
-        int memoryidx = i;
+        int minElemIdx = i;
 
         for (int j=i; j<DataSize; j++){
-            if (comparator(&(Data[memoryidx]), &(Data[j]), sortType)) memoryidx = j;
+            if (comparator(&(Data[minElemIdx]), &(Data[j]), sortType)) minElemIdx = j;
         }
 
-        int j=0;
-        while (comparator(&(Data[memoryidx]), &(Data[j]), sortType)) j++;
-        
-        detail *tmp = NULL;
-        tmp = (detail *)malloc(sizeof(detail));
-        cpyElemStruct(tmp, &(Data[memoryidx]));
+        printf("minElement found - %d\n", minElemIdx);
 
-        deleteElemByIndex(Data, &DataSize, memoryidx);
-        includeElemByIndex(Data, tmp, &DataSize, j);
+        int includeIdx=0, k=0;
+        while (comparator(&(Data[minElemIdx]), &(Data[k]), sortType) && k<i){
+            k++;
+        }
+        includeIdx = k;
+
+        printf("includeIdx found - %d\n", includeIdx);        
+
+        detail *minElemCpy = NULL;
+        minElemCpy = (detail *)malloc(sizeof(detail));
+        cpyElemStruct(minElemCpy, &(Data[minElemIdx]));
+
+        printf("Min copy confirm\n");
+        outputDataConsole(minElemCpy, 1);
+
+        printf("Input to delFunc:\nDataSize - %d\nminElemIdx - %d\n", DataSize, minElemIdx);
+
+        Data = deleteElemByIndex(Data, &DataSize, minElemIdx);
+
+        printf("deleted\n");
+        outputDataConsole(Data, DataSize);
+
+        Data = includeElemByIndex(Data, minElemCpy, &DataSize, includeIdx);
+
+        freeNamesFields(minElemCpy, 1);
+        free(minElemCpy);
     }
     return Data;
 }

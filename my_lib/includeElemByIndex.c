@@ -16,7 +16,7 @@ detail* includeElemByIndex(detail *oldData, detail *Elem, int *Datasize, int ind
     }
 
     strcpy(newData[index].id, Elem->id);
-    free(newData[index].name);
+    if (newData[index].name) free(newData[index].name);
     newData[index].name = (char *)malloc(strlen(Elem->name) * sizeof(char));
     strcpy(newData[index].name, Elem->name);
     newData[index].counter = Elem->counter;

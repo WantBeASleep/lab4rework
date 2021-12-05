@@ -1,5 +1,6 @@
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "../h_files/struct.h"
 
@@ -10,13 +11,13 @@ int comparator(detail *firstElem, detail *secondElem, int sortType){
     switch(sortType){
         case 1:{
             int res = strcmp(firstElem->id, secondElem->id);
-            if (res == -1) res = 0;
+            if (res < 0) res = 0;
             return res;
             break;
         }
         case 2:{
             int res = strcmp(firstElem->name, secondElem->name);
-            if (res == -1) res = 0;
+            if (res < 0) res = 0;
             return res;
             break;
         }
