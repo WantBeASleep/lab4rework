@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 #include "../h_files/struct.h"
-#include "../h_files/processed_funcs.h"
+#include "../h_files/sort_funcs.h"
 
-detail* sortMenu(detail *Data, int DataSize, int *SortType){
+void sortMenu(detail **data, int dataSize, int *sortType){
     printf("~~SORT MENU~~\n");
     printf("1)- Sort by id\n");
     printf("2)- Sort by name\n");
@@ -11,7 +11,7 @@ detail* sortMenu(detail *Data, int DataSize, int *SortType){
     printf("4)- Back\n");
     printf("=============\n");
 
-    scanf("%d", SortType);
+    scanf("%d", sortType);
 
     printf("~~SORT MENU~~\n");
     printf("1)- Sort by Shaker\n");
@@ -25,18 +25,22 @@ detail* sortMenu(detail *Data, int DataSize, int *SortType){
 
     switch(choise){
         case 1:{
-            return shakerSort(Data, DataSize, *SortType);
+            shakerSort(data, dataSize, *sortType);
             break;
         }
         case 2:{
-            return insertionSort(Data, DataSize, *SortType);
+            insertionSort(data, dataSize, *sortType);
             break;
         }
         case 3:{
-            return selectionSort(Data, DataSize, *SortType);
+            selectionSort(data, dataSize, *sortType);
             break;
+        }
+        case 4:{
+            return;
         }
     }
 
+    return;
 }
 

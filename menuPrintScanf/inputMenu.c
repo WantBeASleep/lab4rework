@@ -2,8 +2,13 @@
 
 #include "../h_files/struct.h"
 #include "../h_files/input_funcs.h"
+#include "../h_files/my_lib.h"
 
-detail* inputMenu(int *DataSize){
+detail** inputMenu(detail **data, int *dataSize, int *sortType){
+
+    *sortType = 0;
+    freeStructData(data, dataSize);
+
     printf("~~INPUT MENU~~\n");
     printf("1)- Enter by console\n");
     printf("2)- Enter from file\n");
@@ -16,14 +21,16 @@ detail* inputMenu(int *DataSize){
 
     switch(choise){
         case 1:{
-            return inputDataConsole(DataSize);
+            return inputDataConsole(dataSize);
             break;
         }
         case 2:{
-            return inputDataFile(DataSize);
+            return inputDataFile(dataSize);
             break;
         }
+        case 4:{
+            return NULL;
+        }
     }
-
 }
 

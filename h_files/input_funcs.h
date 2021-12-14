@@ -3,7 +3,7 @@
 
 #include "struct.h"
 
-detail* inputDataConsole(int *DataSize);
-detail* inputDataFile(int *DataSize);
+detail** inputDataConsole(int *datasize);
+detail** inputDataFile(int *datasize);
 
 #endif

@@ -3,15 +3,13 @@
 
 #include "struct.h"
 
-char* addTechPrefix(char *origString);
-void freeNamesFields(detail *data, int datasize);
-void cpyElemStruct(detail *cpy, detail *source);
-void exchangeStructElems(detail *first, detail *second);
-int comparator(detail *firstElem, detail *secondElem, int sortType);
+void freeStructData(detail **data, int *datasize);
+void exchangeStructElems(detail **data, int idxF, int idxS);
+void freeElem(detail *data);
 
+detail** dataMemAdd(detail **data, int *datasize, int addCount);
 detail* newElement();
-detail* structNewMem(detail *oldData, int newSize, int oldSize);
-detail* includeElemByIndex(detail *oldData, detail *Elem, int *Datasize, int index);
-detail* deleteElemByIndex(detail *oldData, int *Datasize, int index);
+
+int comparator(detail *firstElem, detail *secondElem, int sortType);
 
 #endif

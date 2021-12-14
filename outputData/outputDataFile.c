@@ -4,19 +4,19 @@
 
 #include "../h_files/struct.h"
 
-void outputDataFile(detail *Data, int DataSize){
+void outputDataFile(detail **data, int dataSize){
 
     FILE *file;
     char *fileName = NULL;
     
     fileName = readline("Enter the file name ");
     
-    file = fopen(fileName, "a");
+    file = fopen(fileName, "w");
 
-    for (int idx=0; idx<DataSize; idx++){
-        fprintf(file, "%s\n", Data[idx].id);
-        fprintf(file, "%s\n", Data[idx].name);
-        fprintf(file, "%d\n", Data[idx].counter);
+    for (int idx=0; idx<dataSize; idx++){
+        fprintf(file, "%s\n", data[idx]->id);
+        fprintf(file, "%s\n", data[idx]->name);
+        fprintf(file, "%d\n", data[idx]->counter);
     }
 
     free(fileName);

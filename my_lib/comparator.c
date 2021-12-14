@@ -1,13 +1,12 @@
 #include <string.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 #include "../h_files/struct.h"
 
 // return 1 - первый аргумент больше второго
 // return 0 - первый аругмент меньше второго
 
-int comparator(detail *firstElem, detail *secondElem, int sortType){
+int comparator(detail *firstElem, detail *secondElem, int sortType){    
     switch(sortType){
         case 1:{
             int res = strcmp(firstElem->id, secondElem->id);

@@ -2,9 +2,11 @@
 #define MENUS_H
 
 int mainMenu();
-detail* inputMenu(int *DataSize);
-void outputMenu(detail *Data, int DataSize);
-detail* processedMenu(detail *Data, int *DataSize, int *SortFlag);
-detail* sortMenu(detail *Data, int DataSize, int *SortType);
+
+detail** inputMenu(detail **data, int *dataSize, int *sortType);
+detail** processedMenu(detail **data, int *dataSize, int *SortType);
+
+void sortMenu(detail **data, int dataSize, int *sortType);
+void outputMenu(detail **data, int dataSize);
 
 #endif

@@ -1,26 +1,24 @@
 #include <readline/readline.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "../h_files/struct.h"
 #include "../h_files/my_lib.h"
 
-detail* inputDataConsole(int *DataSize){
+detail** inputDataConsole(int *datasize){
     int count = 0;
     printf("Enter the count of new elems - ");
     scanf("%d", &count);
-    *DataSize = count;
-
-    detail *localData = NULL;
+    *datasize = count;
+    detail **localdata = NULL;
+    localdata = (detail **)malloc(count * sizeof(detail *));
 
     for(int k=0; k<count; k++){
-        printf("Data of %d element\n", k+1);
-        int localDataSize = k;
+        printf("==Data of %d element:\n", k+1);
         detail *newElem = NULL;
         newElem = newElement();
-        localData = includeElemByIndex(localData, newElem, &localDataSize, k);
-        freeNamesFields(newElem, 1);
-        free(newElem);
+        localdata[k] = newElem;
     }
-
-    return localData;
+    
+    return localdata;
 }

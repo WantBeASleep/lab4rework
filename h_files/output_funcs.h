@@ -3,7 +3,7 @@
 
 #include "struct.h"
 
-void outputDataConsole(detail *Data, int DataSize);
-void outputDataFile(detail *Data, int DataSize);
+void outputDataConsole(detail **data, int dataSize);
+void outputDataFile(detail **data, int dataSize);
 
 #endif

@@ -3,9 +3,8 @@
 
 #include "struct.h"
 
-detail* newElementByIndex(detail *Data, int *Datasize);
-detail* shakerSort(detail *Data, int DataSize, int sortType);
-detail* insertionSort(detail *Data, int DataSize, int sortType);
-detail* selectionSort(detail *Data, int DataSize, int sortType);
+detail **addElemByIndex(detail **data, int *datasize, int *sortType);
+detail **addElemSaveSort(detail **data, int *datasize, int *sortType);
+detail **deleteElemByIndex(detail **data, int *datasize);
 
 #endif

@@ -6,32 +6,31 @@
 #include "h_files/my_lib.h"
 
 int main(){
-    int SortType = 0; // 0 - не сорт, 1 - сорт по id, 2 - сорт по name, 3 - сорт по counter
-    detail *MainData = NULL;
-    int MainDataSize = 0;
+    int sortType = 0; // 0 - не сорт, 1 - сорт по id, 2 - сорт по name, 3 - сорт по counter
+    detail **data = NULL;
+    int dataSize = 0;
 
     for(; ;){
         int choise = mainMenu();
         switch (choise){
             case 1:{
-                freeNamesFields(MainData, MainDataSize);
-                free(MainData);
-                MainDataSize = 0;
-                SortType = 0;
-                MainData = inputMenu(&MainDataSize);
+                data = inputMenu(data, &dataSize, &sortType);
                 break;
             }
             case 2:{
-                outputMenu(MainData, MainDataSize);
+                outputMenu(data, dataSize);
                 break;
             }
             case 3:{
-                MainData = processedMenu(MainData, &MainDataSize, &SortType);
+                data = processedMenu(data, &dataSize, &sortType);
                 break;
             }
-            case 5:{
-                freeNamesFields(MainData, MainDataSize);
-                free(MainData);
+            case 4:{
+                sortMenu(data, dataSize, &sortType);
+                break;
+            }
+            case 6:{
+                freeStructData(data, &dataSize);
                 exit(0);
                 break;
             }
@@ -40,5 +39,3 @@ int main(){
 
     return 0;
 }
-
-// ФОРМАТ ID ** - **...
