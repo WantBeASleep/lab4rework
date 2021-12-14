@@ -28,6 +28,12 @@ detail** inputMenu(detail **data, int *dataSize, int *sortType){
             return inputDataFile(dataSize);
             break;
         }
+        case 3:{
+            printf("count of mems? - ");
+            scanf("%d", dataSize);
+            return generation(*dataSize);
+            break;
+        }
         case 4:{
             return NULL;
         }

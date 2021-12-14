@@ -29,6 +29,10 @@ int main(){
                 sortMenu(data, dataSize, &sortType);
                 break;
             }
+            case 5:{
+                timeMenu();
+                break;
+            }
             case 6:{
                 freeStructData(data, &dataSize);
                 exit(0);
